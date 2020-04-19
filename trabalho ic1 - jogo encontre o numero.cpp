@@ -1,37 +1,43 @@
 #include<stdio.h>
 #include <locale.h>
+#include <stdlib.h>
+#include<time.h>
 
 int main ()
 {
 	
 setlocale(LC_ALL, "Portuguese");
 
-	int a,k;
+	int a; //nÃºmero a ser adivinhado
+	int k; //palpite do jogador
+	
+	printf("O objetivo Ã© tentar adivinhar o nÃºmero, entre zero e 100, que foi sorteado pelo computador.\n\n");
 	
 	printf("\nDigite seu palpite:\n");
 	scanf("%d", &k);
-	
-	a=10;
+
+	srand(time(NULL));
+	a=rand() % 100;
 
 	do
 	{	
 		if(k>a)
 		{
-			printf("O número procurado é menor que o palpite.");
-			printf("\nDigite outro número:\n");
+			printf("O nÃºmero procurado Ã© menor que o palpite.");
+			printf("\nDigite outro nÃºmero:\n");
 			scanf("%d",&k);
 		}
 	
 		else if(k<a)
 		{
-			printf("O número procurado é maior que o palpite");
-			printf("\nDigite outro número: \n");
+			printf("O nÃºmero procurado Ã© maior que o palpite");
+			printf("\nDigite outro nÃºmero: \n");
 			scanf("%d",&k);
 		}
 	}while(a!=k);
 		
 		if(k==a)
 		{
-			printf("Número encontrado!!");
+			printf("ParabÃ©ns, o nÃºmero foi encontrado!!");
 		}
 }
